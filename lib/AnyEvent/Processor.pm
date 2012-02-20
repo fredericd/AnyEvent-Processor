@@ -21,7 +21,7 @@ has verbose => ( is => 'rw', isa => 'Int' );
 
 =attr watcher
 
-A AnyEvent::FP::Watcher.
+A AnyEvent::Processor::Watcher.
 
 =cut
 has watcher => ( 

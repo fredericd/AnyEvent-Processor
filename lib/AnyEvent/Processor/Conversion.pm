@@ -31,7 +31,7 @@ has writer => (
 Convert something read from the reader into something to write to the writer.
 
 =cut
-has converter => ( is => 'rw', does => 'AnyEvent::FP:Converter' );
+has converter => ( is => 'rw', does => 'AnyEvent::Processor::Converter' );
 
 
 sub run  {
