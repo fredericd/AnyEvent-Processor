@@ -5,8 +5,20 @@ use Moose;
 use AnyEvent;
 
 
+=attr delay
+
+Delay between cal to L<action> process_message call
+
+=cut
 has delay   => ( is => 'rw', isa => 'Int', default => 1 );
+
+=attr action
+
+L<AnyEvent::Processor::WatchableTask> class to call.
+
+=cut
 has action  => ( is => 'rw', does => 'AnyEvent::Processor::WatchableTask' );
+
 has stopped => ( is => 'rw', isa => 'Int', default => 0 );
 
 has wait => ( is => 'rw' );

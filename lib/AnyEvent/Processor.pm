@@ -21,7 +21,7 @@ has verbose => ( is => 'rw', isa => 'Int' );
 
 =attr watcher
 
-A AnyEvent::Processor::Watcher.
+An AnyEvent::Processor::Watcher.
 
 =cut
 has watcher => ( 
@@ -125,7 +125,8 @@ sub process {
 
 =method process_message
 
-Say something about the process. Called by default watcher (verbose mode) each 1s.
+Say something about the process. Called by default watcher (verbose mode) each
+1s. Each time process is called, count in incremented.
 
 =cut
 sub process_message {
