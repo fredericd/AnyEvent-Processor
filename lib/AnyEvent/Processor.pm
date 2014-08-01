@@ -1,5 +1,5 @@
 package AnyEvent::Processor;
-#ABSTRACT: AnyEvent::Processor - Base class for processing something
+#ABSTRACT: Base class to define an event-driven (AnyEvent) task that could periodically be interrupted by a watcher
 
 use Moose;
 

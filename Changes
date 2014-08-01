@@ -1,5 +1,9 @@
 Revision history for Perl module AnyEvent::Processor
 
+0.004 2014-08-01
+
+  - Improve documentation for Debian package
+
 0.003 2012-03-28
 
   - Add dependencies which were missing and were causing some CPAN test failing
