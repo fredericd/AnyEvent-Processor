@@ -1,5 +1,9 @@
 Revision history for Perl module AnyEvent::Processor
 
+0.004 2014-10-28
+
+  - Some doc more
+
 0.004 2014-08-01
 
   - Improve documentation for Debian package
