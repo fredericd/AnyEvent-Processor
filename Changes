@@ -1,5 +1,9 @@
 Revision history for Perl module AnyEvent::Processor
 
+0.005 2015-10-13
+
+  - Force using Glib event loop
+
 0.004 2014-10-28
 
   - Some doc more

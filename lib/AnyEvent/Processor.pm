@@ -2,9 +2,9 @@ package AnyEvent::Processor;
 #ABSTRACT: Base class to define an event-driven (AnyEvent) task that could periodically be interrupted by a watcher
 
 use Moose;
-
-use 5.010;
+use Modern::Perl;
 use AnyEvent;
+use Glib;
 use AnyEvent::Processor::Watcher;
 
 with 'AnyEvent::Processor::WatchableTask';
@@ -51,7 +51,7 @@ Run the process.
 =cut
 sub run {
     my $self = shift;
-    if ( $self->blocking) {
+    if ( $self->blocking ) {
         $self->run_blocking();
     }
     else {
@@ -74,21 +74,20 @@ sub run_task {
     $self->start_process();
 
     if ( $self->verbose ) {
-        $self->watcher( AnyEvent::Processor::Watcher->new(
-            delay => 1, action => $self ) ) unless $self->watcher;
+        $self->watcher(
+            AnyEvent::Processor::Watcher->new( delay => 1, action => $self )
+        ) unless $self->watcher;
         $self->watcher->start();
     }
 
     my $end_run = AnyEvent->condvar;
-    my $idle = AnyEvent->idle(
-        cb => sub {
-            unless ( $self->process() ) {
-                $self->end_process();
-                $self->watcher->stop() if $self->watcher;
-                $end_run->send;
-            }
+    my $idle = AnyEvent->idle( cb => sub {
+        unless ( $self->process() ) {
+            $self->end_process();
+            $self->watcher->stop() if $self->watcher;
+            $end_run->send;
         }
-    );
+    });
     $end_run->recv;
 }
 
@@ -110,7 +109,7 @@ notification to a monitoring system like Nagios.
 
 =cut
 sub start_message {
-    print "Start process...\n";
+    say "Start process";
 }
 
 
@@ -138,7 +137,7 @@ If your processor monitor the temperature of your fridge, you can display it...
 =cut
 sub process_message {
     my $self = shift;
-    print sprintf("  %#6d", $self->count), "\n";    
+    say sprintf("  %#6d", $self->count);    
 }
 
 
@@ -157,7 +156,7 @@ Say something at the end of the process. Called by default watcher.
 =cut
 sub end_message {
     my $self = shift; 
-    print "Number of items processed: ", $self->count, "\n";
+    say "Number of items processed: ", $self->count;
 }
 
 

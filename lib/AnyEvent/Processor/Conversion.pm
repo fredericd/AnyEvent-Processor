@@ -5,6 +5,8 @@ use Moose;
 
 extends 'AnyEvent::Processor';
 
+use Modern::Perl;
+
 
 =attr reader
 
